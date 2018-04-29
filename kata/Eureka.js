@@ -21,9 +21,9 @@ sumDigPow(90, 100) == []
 
 // best answer
 function sumDigPow(a, b) {
-  var ans = [];
+  let ans = [];
   while(a <= b){
-    if(a.toString().split('').reduce((x,y,i)=>x + +y ** (i + 1),0) == a)
+    if(a.toString().split('').reduce((x, y, i) => x + +y ** (i + 1),0) === a)
     ans.push(a);
     a++;
   }
