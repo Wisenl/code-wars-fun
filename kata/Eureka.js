@@ -19,6 +19,22 @@ If there are no numbers of this kind in the range [a, b] the function should out
 sumDigPow(90, 100) == []
  */
 
+
+
+// my answer
+function sumDigPow(a, b) {
+  let arr = [];
+  for (let i = a; i <= b; i++) {
+    let sum = 0;
+    for (let j = 0; j < String(i).length; j++) {
+      sum += Math.pow(parseInt(String(i)[j]), j+1);
+    }
+    if (sum === i) arr.push(i);
+  }
+  return arr;
+}
+
+
 // best answer
 function sumDigPow(a, b) {
   let ans = [];
@@ -29,3 +45,15 @@ function sumDigPow(a, b) {
   }
   return ans;
 }
+
+// best answer II
+function filterFunc(n) {
+  return `${n}`.split("").map((x, i) => x ** (i+1)).reduce((a, b) => a+b) === n;
+}
+function *range(a, b) {
+  for (let i = a; i <= b; ++i) yield i;
+}
+function sumDigPow(a, b) {
+  return Array.from(range(a, b)).filter(filterFunc);
+}
+// 使用 generator 语法输出 从 a 到 b 的数组，在用 filter 函数筛选 正确的数值，clever！
